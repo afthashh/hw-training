@@ -1,0 +1,28 @@
+Downloaded and installed MongoDB, MongoDB shell and MongoDB compass(GUI).
+Created a database and collection using MongoDB shell.
+Created a database and collection using MongoDB compass.
+
+Pymongo:
+	1. Installed pymongo
+	2. Connected to MongoDB 
+	3. Inserting Data - insert_one(), insert_many()
+	4. Querying Data - find()
+	5. Updating Data - update_one(), update_many()
+	6. Deleting Data - delete_one(), delete_many()
+	
+Selenium:
+	1. Installed Selenium
+	2. Downloaded and set up ChromeDriver
+	3. Selenium Code Basics - webdriver.Chrome(), .get(), find_element
+	4. Automating Google Search - find_element, send_keys, Keys.RETURN, find_elements
+	5. Closing the Browser - .quit()
+
+Pika:
+	1. Installing pika
+	2. Connecting to RabbitMQ
+	3. Sending and Receiving Messages
+	4. Starting and Stopping RabbitMQ
+
+Logging - import, configure, add logging statements
+
+
