@@ -1,0 +1,44 @@
+ast:
+	1. Analyzing Python Code
+	2. Iterating Through AST Nodes
+	
+urllib:
+	1. Using urllib.request
+	2. Handling Errors with urllib.error
+	3. urllib.parse for URL Parsing
+	4. urllib.robotparser for robots.txt
+
+ftplib:
+	1. Connecting to an FTP Server - FTP()
+	2. Logging In to the FTP Server - login()
+	3. Listing Directory Contents - nlst()
+	4. Closing the FTP Connection - quit()
+	
+base64:
+	1. Encoding Data with base64 - b64encode()
+	2. Decoding Base64 Data with base64 - b64decode()
+	
+os:
+	1. Working with Directories and Files - os.getcwd(), os.chdir(), os.listdir(), os.mkdir(), os.remove(), os.rmdir(), os.path.exists()
+	2. Working with Environment Variables - os.environ.get(), os.environ['VAR_NAME'], os.environ
+	3. Executing System Commands - os.system()
+	4. Miscellaneous Operating System Functions - os.name, os.environ.get(), os.path.join(), os.path.basename(), os.path.dirname(), os.path.exists()
+	
+js2py:
+	1. Installation - pip install js2py
+	2. Executing JavaScript Code - import js2py, js2py.EvalJs(), js_context.execute(js_code)
+	
+cloudscraper:
+	1. import cloudscraper
+	2. Define the URL
+	3. Create a CloudScraper Instance - create_scraper()
+	4. Send GET Request - get()
+	5. Retrieve Response Content - content
+	
+Set up AWS
+boto3:
+	1. Installed boto3
+	2. Created an S3 Client - boto3.client('s3')
+	3. Created a Bucket - my-random-bucket-12345
+	4. Uploaded Image
+
