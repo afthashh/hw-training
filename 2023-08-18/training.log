@@ -1,0 +1,9 @@
+A task was given - to use 'requests' and 'parsel' with a previous Scrapy assignment
+Changes made:
+	1. Imported the required libraries - scrapy and selector from parsel
+	2. Created a Selector instance using the HTML content of the response.
+	3. Extracted the URLs of property listings using a CSS selector.
+	4. Created a Selector instance for the property's HTML content.
+	5. Extracted various property details using CSS selectors for each property attribute.
+	6. Saved the scraped data as a JSON file
+	
