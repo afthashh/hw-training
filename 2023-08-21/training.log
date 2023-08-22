@@ -1,0 +1,6 @@
+Tried different methods without using scrapy and spider.
+Successfully scraped data using parsel and saved the scraped data as a JSON file.
+Experimented with using the requests library for data scraping.
+Used cloudscraper along with parsel to scrape data from websites that implement anti-bot protection.
+Used xpath selectors instead of css selectors for data extraction this time.
+
