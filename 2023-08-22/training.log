@@ -1,0 +1,36 @@
+A meeting was conducted, and the following topics were discussed:
+Indentation - space, tab
+Data types
+str
+int
+float
+boolean
+list
+dict
+tuple
+set
+none
+Basic operations
+If else
+Loops
+Function
+Class
+Object
+OOP concepts
+self argument
+Constructor, destructor
+File operations
+Positional arguments(args), Keyword arguments(kwargs)
+return, yield
+try, except
+String formatting
+Generators
+Module importing
+Python memory reference
+List comprehension
+Exception and errors
+Code readability, optimization, reliability
+Python standards - PEP8
+Best practice coding
+
+A task was given - Python basics and operations
