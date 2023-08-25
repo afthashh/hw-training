@@ -1,0 +1,9 @@
+using deepcopy function from copy module
+append
+update
+Meeting was conducted:
+	* Discussed about previous task.
+	* Received suggestions to improve code:
+		* Instead of task success being represented as true/false, could have used booleans for standard coding practice
+		* Some lines of code were unnecessary and could have been removed for the sake of code efficiency.
+	
