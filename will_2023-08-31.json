@@ -1,0 +1,22 @@
+{
+    "emp_name": "will",
+    "emp_id": 1765,
+    "login_time": "2023-08-31 10:06",
+    "logout_time": "2023-08-31 10:07",
+    "tasks": [
+        {
+            "task_title": "main project",
+            "task_description": "testing models",
+            "start_time": "2023-08-31 10:07",
+            "end_time": null,
+            "task_success": true
+        },
+        {
+            "task_title": "training new models",
+            "task_description": "using rnn",
+            "start_time": "2023-08-31 10:07",
+            "end_time": null,
+            "task_success": true
+        }
+    ]
+}

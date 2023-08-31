@@ -1,0 +1,22 @@
+{
+    "emp_name": "Sam",
+    "emp_id": 1001,
+    "login_time": "2023-08-31 09:44",
+    "logout_time": "2023-08-31 09:46",
+    "tasks": [
+        {
+            "task_title": "main project",
+            "task_description": "bug fix",
+            "start_time": "2023-08-31 09:45",
+            "end_time": "2023-08-31 09:45",
+            "task_success": true
+        },
+        {
+            "task_title": "side project",
+            "task_description": "testing program",
+            "start_time": "2023-08-31 09:46",
+            "end_time": "2023-08-31 09:46",
+            "task_success": false
+        }
+    ]
+}
