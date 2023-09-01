@@ -1,2 +1,8 @@
 Made changes to previous task - used boolean
-Tried various Python functions for different tasks.
+Learning Functions and Lambda Expressions in Python:
+	* Defining Functions
+	* Arbitrary Arguments
+	* Keyword Arguments and Default Parameters
+	* Recursion
+	* Lambda Expressions
+	* Filtering, Mapping, and Reducing

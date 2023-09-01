@@ -1,0 +1,9 @@
+Tried using Python lists and their various operations:
+	* Creating Lists
+	* Indexing
+	* Modifying Lists
+	* List Operations - append, extend, insert 
+	* Concatenation and Repetition - '+', '*'
+	* List Length - len()
+	* Deletion and Removal - del, remove, pop
+
