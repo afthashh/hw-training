@@ -1,0 +1,3 @@
+Implemented pymongo in my olx scrapy code and saved to mongodb.
+A task was given - using pymongo learn CRUD(Create, Read, Update, Delete) operations on the implemented code.
+Task completed.
