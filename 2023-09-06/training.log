@@ -1,0 +1,10 @@
+New topics were given to go through:
+	Anti-scraping measures and evasion Techniques
+		* IP blocking
+		* Headers based blocking
+		* Crawling pattern detection
+		* Captcha verification
+		* Javascript Validation
+		* Premium services - Perimeterx, Distilnetwork, Recaptcha etc
+		
+Fixed the problem of not being able to scrape using requests in a previous task (olx).
