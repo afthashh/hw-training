@@ -1,0 +1,6 @@
+Continuing Bayut scraping.
+A task was given for Bayut website:
+	* Find how the duplicate came in the dataset
+	* Find exact reason for running failure or not getting the complete data
+	* Help each other
+Extracted 50442 data(33163 data after removing duplicates).
