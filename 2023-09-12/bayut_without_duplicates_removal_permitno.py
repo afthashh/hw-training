@@ -2,16 +2,17 @@ import requests
 from parsel import Selector
 import csv
 import time
+import re
 
 class Bayutscraper:
     def __init__(self, max_pages=2084):
         self.start_url = "https://www.bayut.com/to-rent/property/dubai/"
-        self.duplicate_urls = set()
         self.counter = 0
         self.page_counter = 2
         self.max_pages = max_pages
         self.max_retries = 3
         self.retry_delay = 5
+        self.csv_initialized = False  # Track if CSV header has been written
 
     def start(self):
         response = self.get_with_retry(self.start_url)
@@ -39,16 +40,15 @@ class Bayutscraper:
             for apartments in apartment:
                 relative_url = apartments.css('._4041eb80 a ::attr(href)').get()
                 full_url = "https://www.bayut.com/" + relative_url
-                if full_url not in self.duplicate_urls:
-                    self.duplicate_urls.add(full_url)
 
-                    response = self.get_with_retry(full_url)
-                    if response and response.status_code == 200:
-                        product_selector = Selector(text=response.text)
-                        self.parse_property_page(product_selector, response)
+                response = self.get_with_retry(full_url)
+                if response and response.status_code == 200:
+                    product_selector = Selector(text=response.text)
+                    permit_number = self.extract_permit_number(response.text)
+                    data = self.extract_data(product_selector, response.url, permit_number)
+                    self.save_to_csv(data)
                 else:
-                    with open("bayutduplicatedata_urls1.txt", "a") as file:
-                        file.write(full_url + "\n")
+                    print(f"Error fetching {full_url}. Status code: {response.status_code}")
 
             next_page_url = selector.css('[title="Next"] ::attr(href)').get()
             self.page_counter += 1
@@ -65,9 +65,16 @@ class Bayutscraper:
                 print("Scraping finished. No next page found.")
                 break
 
-    def parse_property_page(self, selector, response):
+    def extract_permit_number(self, text):
+        permit_number_match = re.search(r'"permitNumber":"([^"]+)"', text)
+        if permit_number_match:
+            return permit_number_match.group(1)
+        else:
+            return "Permit Number not found"
+
+    def extract_data(self, selector, url, permit_number):
         data = {
-            'property_link': response.url,
+            'property_link': url,
             'property_id': selector.xpath("//*[contains(@class, '_033281ab')]//*[@aria-label='Reference']/text()").get(),
             'purpose': selector.xpath("//*[contains(@class, '_033281ab')]//*[@aria-label='Purpose']/text()").get(),
             'type': selector.xpath("//*[contains(@class, '_033281ab')]//*[@aria-label='Type']/text()").get(),
@@ -79,26 +86,30 @@ class Bayutscraper:
             },
             'location': selector.xpath("//*[contains(@class, '_1f0f1758')]/text()").get(),
             'bed_bath_size': {
-                'bedrooms': selector.xpath("//*[@aria-label='Beds']//*[contains(@class, 'fc2d1086')]/text()").get(),
-                'bathrooms': selector.xpath("//*[@aria-label='Baths']//*[contains(@class, 'fc2d1086')]/text()").get(),
+                'bedrooms': int(selector.xpath("//*[@aria-label='Beds']//*[contains(@class, 'fc2d1086')]/text()").get().split()[0])
+                             if selector.xpath("//*[@aria-label='Beds']//*[contains(@class, 'fc2d1086')]/text()").get().split()[0].isdigit()
+                             else None,
+                'bathrooms': int(selector.xpath("//*[@aria-label='Baths']//*[contains(@class, 'fc2d1086')]/text()").get().split()[0])
+                             if selector.xpath("//*[@aria-label='Baths']//*[contains(@class, 'fc2d1086')]/text()").get().split()[0].isdigit()
+                             else None,
                 'size': selector.xpath("//*[contains(@class, 'fc2d1086')]//span/text()").get(),
             },
+            'permit_number': permit_number,
             'agent_name': selector.xpath("//*[contains(@class, '_63b62ff2')]//*[contains(@class, 'f730f8e6')]/text()").get(),
             'img_url': selector.xpath('//*[@aria-label="Property image"]//*[@class="bea951ad"]/@src').get(),
             'breadcrumbs': ' > '.join(selector.xpath('//*[@aria-label="Breadcrumb"]//*[contains(@class, "_327a3afc")]/text()').getall()),
             'amenities': selector.xpath("//*[contains(@class, '_40544a2f')]//*[contains(@class, '_005a682a')]/text()").getall(),
             'description': ', '.join([size.strip() for size in selector.xpath("//*[contains(@class, '_96aa05ec')]//*[contains(@class, '_2a806e1e')]/text()").getall()]),
         }
-
-        self.save_to_csv(data)
-        self.counter += 1
+        return data
 
     def save_to_csv(self, data):
         filename = "bayut_fulldata1.csv"
         with open(filename, "a", newline="", encoding="utf-8") as file:
             writer = csv.DictWriter(file, fieldnames=data.keys())
-            if self.counter == 0:
+            if not self.csv_initialized:
                 writer.writeheader()  # Write the header only if it's the first time
+                self.csv_initialized = True
             writer.writerow(data)
 
 if __name__ == "__main__":
