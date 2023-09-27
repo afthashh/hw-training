@@ -1,0 +1,24 @@
+# SCRAPY:
+Scrapy is a powerful open-source Python framework designed specifically for web crawling and web scraping. 
+ It provides developers with a robust set of tools and libraries to navigate websites, fetch data, and extract valuable information.
+
+
+# Request:
+A Request object represents an HTTP request that Scrapy sends to a website to retrieve web pages. It includes information such as the URL and optional callback function to handle the response.
+
+# FormRequest:
+A FormRequest is a specialized type of request that is used to submit forms on websites. It allows you to simulate form submissions by specifying form data and fields.
+
+# Response:
+A Response object represents the HTTP response received from a web page after sending a request. It contains the page content and various attributes for parsing.
+
+# Shell and inspect_response:
+Scrapy provides an interactive shell for testing and debugging. You can use the scrapy shell command to open a shell session and the inspect_response function to examine the response objects interactively.
+eg:
+scrapy shell 'https://example.com'
+response
+response.body  # View the page content
+response.css('title::text').get()  # Extract data using CSS selectors
+
+# Selector:
+A Selector is a powerful tool within Scrapy to extract data from HTML or XML documents. It allows you to use XPath or CSS selectors to navigate and extract specific elements from the page.

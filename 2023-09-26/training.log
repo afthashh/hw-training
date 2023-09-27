@@ -1,0 +1,10 @@
+Meeting was conducted for session.
+Session by Surya - xpath
+Tried to use xpath to get desired data.
+A task was given - Session: 
+	scrapy - https://docs.scrapy.org/en/latest/intro/tutorial.html
+		Request
+		FormRequest
+		Response
+		Shell, inspect_response
+		Selector
